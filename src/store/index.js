@@ -4,13 +4,11 @@ import { defineStore } from 'pinia'
 // 第一个参数是你的应用中 Store 的唯一 ID。
 export const useLoginStore = defineStore('login', {
   // 其他配置...
-  state: () => ({ count: 0 }),
+  state: () => ({}),
   getters: {
-    double: (state) => state.count * 2,
+
   },
   actions: {
-    increment() {
-      this.count++
-    },
+
   },
 })

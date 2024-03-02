@@ -9,6 +9,7 @@
           <el-header class="header">
             <Header></Header>
           </el-header>
+            <Tags></Tags>
           <el-main class="main">
             <router-view></router-view>
           </el-main>
@@ -18,7 +19,7 @@
   </template>
   
   <script setup>
-  
+  import Tags from '../components/tags.vue'
   import LeftBar from '../components/LeftBar.vue'
   import Header from '../components/Header.vue'
   import { useCollapseStore } from '../store/collapse';

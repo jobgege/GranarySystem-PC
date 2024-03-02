@@ -1,29 +1,26 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import asyncRoutes from './StaticRoute'
 
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [
-    {
-      path: "/",
-      name: "home",
-      component: () => import("../views/homepage.vue"),
-      children: [
-        {
-          path: "/111",
-          name: "111",
-          component:()=>import("../views/users.vue")
-         },
-      ],
+  routes:asyncRoutes
+})
 
-    },
-    {
-      path: "/login",
-      name: "login",
-      // component: () => import("../views/Login.vue"),
-    },
-  ],
+// router.beforeEach((to, from, next) => {
+//   // const permiss = usePermissStore();如果要做权限管理
+//   if (!role && to.path !== '/login') {
+//       next('/login');
+//   } else if (to.meta.permiss && !permiss.key.includes(to.meta.permiss)) {
+//       // 如果没有权限，则进入403
+//       next('/403');
+//   } else {
+//       next();
+//   }
+// });
+
+router.afterEach(() => {
+  // NProgress.done()
 })
 
 export default router

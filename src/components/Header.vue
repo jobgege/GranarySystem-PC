@@ -2,7 +2,8 @@
     <div class="header">
         <div class="header-left">
             <el-icon style="cursor: pointer;" @click="handleCollapse">
-                <component :is="CollapseStore.isCollapse?'Fold':'Expand'"> </component>
+                <!-- 使用：is懂得动态绑定组件的类型 -->
+                <component :is="CollapseStore.isCollapse?'Expand':'Fold'"> </component>
             </el-icon>
         </div>
         <div class="header-right">

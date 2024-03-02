@@ -32,7 +32,8 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { useCollapseStore } from '../store/collapse';
-
+import {  useRouter } from 'vue-router';
+const router = useRouter();
 
 //折叠
 const CollapseStore = useCollapseStore();
@@ -52,7 +53,7 @@ const handleSetting = () => {
 }
 
 const handleQuit = () => {
-
+    router.push('/login');
 }
 </script>
 

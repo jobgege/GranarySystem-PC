@@ -1,10 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-
+import {  useRouter } from 'vue-router';
+const router = useRouter();
 const formModel = ref({
     userId: '',
     password: ''
 })
+const login = () => {
+    router.push('/');
+}
 </script>
 
 <template>
@@ -34,7 +38,7 @@ const formModel = ref({
                             v-model="formModel.password"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="loginbutton">立即登入</el-button>
+                        <el-button class="loginbutton" @click="login">立即登入</el-button>
                     </el-form-item>
                     <el-form-item class="rememberpsd">
                         <el-checkbox class="checkbox"></el-checkbox>

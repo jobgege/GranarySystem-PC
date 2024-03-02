@@ -3,7 +3,7 @@
         <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#2d3d51" text-color="#BFCBD9"
             :collapse="CollapseStore.isCollapse">
             <div class="mb-2 logobox">
-                <span v-show="!CollapseStore.isCollapse">粮食检验检测系统</span>
+                <span v-show="!CollapseStore.isCollapse" class="title">粮食检验检测系统</span>
             </div>
             <template v-for="menu  in  menus">
                 <template v-if="menu.menus">
@@ -228,29 +228,44 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .logobox {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 50px;
+    height: 5.75rem;
     margin: 0;
     text-align: center;
-    line-height: 50px;
-    background-color: #2d3d51;
-    color: #fff;
+    line-height: 2.5625rem;
+    color: #FBFAFA;
+    font-family: SourceHanSansSC-regular;
+    font-size: .875rem;
+}
+
+.title{
+    position: absolute;
+    left: 3rem;
+    top: 1.6875rem;
+    width: 14rem;
+    height: 2.5625rem;
+    font-size: 1.75rem;
 }
 
 img {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
 }
 
 .el-menu {
-    border: 0px;
+    border: 0rem;
     height: 100vh;
     overflow-x: hidden;
     overflow-y: hidden;
+    background-color:rgba(33,45,62,1);
+    
+}
+.el-menu-item{
+	background:rgba(33,45,62,1)!important;
 }
 </style>

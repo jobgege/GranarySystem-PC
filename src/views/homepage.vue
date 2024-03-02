@@ -1,7 +1,7 @@
 <template>
     <div class="common-layout">
       <el-container>
-        <el-aside :width="CollapseStore.isCollapse ? '65px' : '220px'" class="asider">
+        <el-aside :width="CollapseStore.isCollapse ? '4.0625rem' : '20.0625rem'" class="asider">
           <LeftBar></LeftBar>
         </el-aside>
   
@@ -42,6 +42,7 @@
   }
   
   .header {
-    height: 65px;
+    height: 5.0625rem;
+    background-color: rgba(251,250,250,1);
   }
   </style>

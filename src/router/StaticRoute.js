@@ -62,6 +62,7 @@ const asyncRoutes = [
             title: '登录',
         },
          component: () => import(/* webpackChunkName: "login" */ '../views/LoginPage.vue'),
+
     },
    
     // {

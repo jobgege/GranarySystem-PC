@@ -45,6 +45,14 @@ const asyncRoutes = [
                 ]
                 // component: () => import(/* webpackChunkName: "table" */ '../views/table.vue'),
             },
+            {
+                path: '/personhome',
+                name: 'PersonHome',
+                meta: {
+                    title: '个人中心',
+                },
+                 component: () => import(/* webpackChunkName: "login" */ '../views/PersonPage.vue'),
+            },
         ],
     },
     {
@@ -53,8 +61,10 @@ const asyncRoutes = [
         meta: {
             title: '登录',
         },
-        component: () => import( '../views/loginPage.vue'),
+         component: () => import(/* webpackChunkName: "login" */ '../views/LoginPage.vue'),
+
     },
+   
     // {
     //     path: '/403',
     //     name: '403',

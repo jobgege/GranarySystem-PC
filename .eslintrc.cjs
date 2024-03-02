@@ -34,7 +34,10 @@ module.exports = {
         defineProps: 'readonly',
         defineEmits: 'readonly',
         defineExpose: 'readonly',
-        withDefaults: 'readonly'
+        withDefaults: 'readonly',
+		ElMessage: 'readonly',
+		ElMessageBox: 'readonly',
+		ElLoading: 'readonly'
     },
     // 这里时配置规则的,自己看情况配置
     // 这里可以进行自定义规则配置

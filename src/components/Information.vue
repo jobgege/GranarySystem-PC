@@ -5,7 +5,7 @@
             <div class="card">
                 <!-- 用户头像 -->
                 <el-avatar :size="80" :src="user.imgUrl"  />
-                <el-card class="son">
+                <el-card class="son" >
                     <span>
                         姓名
                     </span>

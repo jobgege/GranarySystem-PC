@@ -237,12 +237,11 @@ onMounted(() => {
 }
 
 .title{
-    position: absolute;
-    left: 3rem;
-    top: 1.6875rem;
-    width: 14rem;
-    height: 2.5625rem;
-    font-size: 1.75rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    line-height: 5.75rem;
+    font-size: 1.3vw;
 }
 
 img {
@@ -260,5 +259,8 @@ img {
 }
 .el-menu-item{
 	background:rgba(33,45,62,1)!important;
+}
+.el-sub-menu{
+    background:rgba(33,45,62,1)!important;
 }
 </style>

@@ -67,7 +67,6 @@ const login = () => {
         .login-main-picture {
             float: left;
             width: 728px;
-
             height: 100%;
             background: url('src/assets/login.png') no-repeat;
         }

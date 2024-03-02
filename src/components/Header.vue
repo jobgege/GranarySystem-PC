@@ -84,6 +84,6 @@ const handleQuit = () => {
 .left{
     position: relative;
     float: left;
-    font-size:40px;
+    font-size:30px;
 }
 </style>

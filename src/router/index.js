@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import asyncRoutes from './StaticRoute'
 
+
 const router = createRouter({
   history: createWebHistory(),
   routes:asyncRoutes

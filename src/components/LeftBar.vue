@@ -175,14 +175,7 @@ const getMenuData = () => {
             menuid: 31,
             icon: 'Setting',
             label: '个人中心',
-            menus: [
-                {
-                    menuid: 32,
-                    icon: 'Van',
-                    label: '修改密码',
-                    name: 'ChangePass',
-                },
-            ]
+            name:'PersonHome'
         },
         {
             menuid: 41,

@@ -7,16 +7,14 @@ export const useUserStore = defineStore('user', {
         return {
             //设置token
             userId: '',
-            password: ''
+            password: '',
+            rememberPsd: false
         }
     },
     getters: {
         
     },
     actions: {
-        setUserId(t) {
-            this.userId = t
-        }
     },
     persist: {
         enabled: true,

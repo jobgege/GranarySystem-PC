@@ -5,6 +5,18 @@ const router = useRouter()
 // 引入滑块组件
 import SlideVerify from "vue3-slide-verify"
 import "vue3-slide-verify/dist/style.css"
+import { useUserStore } from '../store/user'
+import { onMounted } from 'vue'
+
+// 进入页面先填入工号和密码、勾选记住密码的状态
+const checkToRememberPsd = ref(false)
+const userStore = useUserStore()
+onMounted(()=>{
+  formModel.value.userId = userStore.userId
+  formModel.value.password = userStore.password
+  checkToRememberPsd.value = userStore.rememberPsd
+})
+
 
 // 整个用于提交的form数据对象
 const formModel = ref({
@@ -28,17 +40,21 @@ const loginbutton = async () => {
   await form.value.validate()
   // 能改变showSlideVerify的值但是组件不显示？？最后直接修改display的值
   document.querySelector('.cover').style.display = "block"
-  console.log();
-
 }
 // 2.验证成功后请求后端，失败显示不通过
-const msg = ref("");
-// const block = ref<SlideVerifyInstance>({})
 const onSuccess=()=>{
     //TODO: 请求后端
     router.push("/") //跳转到前台首页
     ElMessage.success("登陆成功")
-    //TODO：登陆成功之后设置token和用户信息
+    // 登陆成功之后本地存储用户信息
+    userStore.userId = formModel.value.userId
+    // 勾选记住密码后本地存储密码,取消勾选时要清除本地存储的密码
+    userStore.rememberPsd = checkToRememberPsd.value
+    if (checkToRememberPsd.value === true) {
+        userStore.password = formModel.value.password
+    }else{
+        userStore.password = ''
+    }
 }
 const onFail=()=>{
 }
@@ -46,6 +62,9 @@ const onRefresh=()=>{
 }
 const onAgain = () => {
 }
+
+
+
 </script>
 
 <template>
@@ -87,7 +106,7 @@ const onAgain = () => {
                         <el-button class="loginbutton" @click="loginbutton">立即登入</el-button>
                     </el-form-item>
                     <el-form-item class="rememberpsd">
-                        <el-checkbox class="checkbox"></el-checkbox>
+                        <el-checkbox class="checkbox" v-model="checkToRememberPsd"></el-checkbox>
                     </el-form-item>
                 </el-form>
             </div>
@@ -105,7 +124,6 @@ const onAgain = () => {
 	          @fail="onFail"
 	          @refresh="onRefresh"
 	        ></slide-verify>
-	        <div>{{ msg }}</div>
         </el-card>
     </div>
 </template>

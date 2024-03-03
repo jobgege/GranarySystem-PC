@@ -2,7 +2,23 @@
 import { ref } from 'vue'
 
 import { useRouter } from 'vue-router'
+const router = useRouter()
+// 引入滑块组件
+import SlideVerify from "vue3-slide-verify"
+import "vue3-slide-verify/dist/style.css"
 import { useUserStore } from '../store/user'
+import { onMounted } from 'vue'
+
+// 进入页面先填入工号和密码、勾选记住密码的状态
+const checkToRememberPsd = ref(false)
+const userStore = useUserStore()
+onMounted(()=>{
+  formModel.value.userId = userStore.userId
+  formModel.value.password = userStore.password
+  checkToRememberPsd.value = userStore.rememberPsd
+})
+
+
 // 整个用于提交的form数据对象
 
 const formModel = ref({
@@ -20,17 +36,38 @@ const rules = {
     { required: true, message: '请输入信息', trigger: 'blur' }
   ]
 }
-// 将用户信息存本地
-const userStore = useUserStore()
-userStore.setUserId(formModel.value.userId)
-
-// 登录前预校验->请求后端->转到首页
-const router = useRouter()
-const login = async () => {
-  await form.value.validate()// 预校验，没输入信息不会发送请求
-  console.log('开始登录请求')
-  router.push('/')
+// 登录前预校验->滑块验证->请求后端->转到首页
+// 1.点击登录先进行预校验，通过后显示滑块验证
+const loginbutton = async () => {
+  // 预校验，没输入信息不会进行滑块验证
+  await form.value.validate()
+  // 能改变showSlideVerify的值但是组件不显示？？最后直接修改display的值
+  document.querySelector('.cover').style.display = "block"
 }
+// 2.验证成功后请求后端，失败显示不通过
+const onSuccess=()=>{
+    //TODO: 请求后端
+    router.push("/") //跳转到前台首页
+    ElMessage.success("登陆成功")
+    // 登陆成功之后本地存储用户信息
+    userStore.userId = formModel.value.userId
+    // 勾选记住密码后本地存储密码,取消勾选时要清除本地存储的密码
+    userStore.rememberPsd = checkToRememberPsd.value
+    if (checkToRememberPsd.value === true) {
+        userStore.password = formModel.value.password
+    }else{
+        userStore.password = ''
+    }
+}
+const onFail=()=>{
+}
+const onRefresh=()=>{
+}
+const onAgain = () => {
+}
+
+
+
 </script>
 
 <template>
@@ -69,16 +106,28 @@ const login = async () => {
                         ></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="loginbutton" @click="login">立即登入</el-button>
+                        <el-button class="loginbutton" @click="loginbutton">立即登入</el-button>
                     </el-form-item>
                     <el-form-item class="rememberpsd">
-                        <el-checkbox class="checkbox"></el-checkbox>
+                        <el-checkbox class="checkbox" v-model="checkToRememberPsd"></el-checkbox>
                     </el-form-item>
                 </el-form>
             </div>
         </div>
         <div class="login-bg-left"></div>
         <div class="login-bg-right"></div>
+        <!-- 滑块验证部分 CSDN：“Vue3引入滑块验证组件-2分钟搞定”-->
+        <el-card class="cover">
+	      <slide-verify
+	          ref="block"
+	          slider-text="向右滑动->"
+	          accuracy=1
+	          @again="onAgain"
+	          @success="onSuccess"
+	          @fail="onFail"
+	          @refresh="onRefresh"
+	        ></slide-verify>
+        </el-card>
     </div>
 </template>
 
@@ -89,91 +138,92 @@ const login = async () => {
     .login-main {
         position: absolute;
         z-index: 1;
-        left: 5.8125rem;
-        top: 3.875rem;
-        width: 106.1875rem;
-        height: 59.75rem;
+        left: 4.8438vw;
+        top: 3.2292vw;
+        width: 88.4896vw;
+        height: 49.7917vw;
         background-color: rgba(229, 229, 229, 1);
 
         .login-main-picture {
             float: left;
-            width: 45.5rem;
-            height: 100%;
+            width: 37.9167vw;
+            height: 49.7917vw;
             background: url('src/assets/login.png') no-repeat;
+            background-size: 100% 100%;
         }
 
         .login-main-information {
             float: left;
-            width: 60.6875rem;
-            height: 59.75rem;
-            line-height: 1.25rem;
+            width: 50.5729vw;
+            height: 49.7917vw;
+            line-height: 1.0417vw;
             background-color: rgba(255, 255, 255, 1);
             color: rgba(16, 16, 16, 1);
-            font-size: .875rem;
+            font-size: .7292vw;
             text-align: center;
             font-family: Roboto;
 
             .inf-h1 {
                 position: absolute;
-                top: 6.8125rem;
-                left: 50.6875rem;
-                width: 12rem;
-                height: 2.5625rem;
-                line-height: 1.8125rem;
+                top: 5.6771vw;
+                left: 42.2396vw;
+                width: 10vw;
+                height: 2.1354vw;
+                line-height: 1.5104vw;
                 color: rgba(33, 84, 118, 1);
-                font-size: 3rem;
+                font-size: 2.5vw;
                 text-align: left;
                 font-family: SourceHanSansSC-bold;
             }
 
             .inf-h2 {
                 position: absolute;
-                top: 13.0625rem;
-                left: 50.6875rem;
-                width: 18rem;
-                height: 2.5rem;
-                line-height: 1.8125rem;
+                top: 10.8854vw;
+                left: 42.2396vw;
+                width: 15vw;
+                height: 2.0833vw;
+                line-height: 1.5104vw;
                 color: rgba(0, 0, 0, 1);
-                font-size: 2.25rem;
+                font-size: 1.875vw;
                 text-align: left;
                 font-family: SourceHanSansSC-bold;
             }
 
             .text-id {
                 position: absolute;
-                top: 20.25rem;
-                left: 50.6875rem;
-                width: 5.25rem;
-                height: 1.8125rem;
-                line-height: 1.8125rem;
+                top: 16.875vw;
+                left: 42.2396vw;
+                width: 4.375vw;
+                height: 1.5104vw;
+                line-height: 1.5104vw;
                 color: rgba(0, 0, 0, 1);
-                font-size: 1.75rem;
+                font-size: 1.4583vw;
                 text-align: left;
                 font-family: SourceHanSansSC-bold;
             }
 
             .text-psd {
                 position: absolute;
-                top: 25.4375rem;
-                left: 50.6875rem;
-                width: 5.25rem;
-                height: 1.8125rem;
-                line-height: 1.8125rem;
+                top: 21.1979vw;
+                left: 42.2396vw;
+                width: 4.375vw;
+                height: 1.5104vw;
+                line-height: 1.5104vw;
                 color: rgba(0, 0, 0, 1);
-                font-size: 1.75rem;
+                font-size: 1.4583vw;
                 text-align: left;
                 font-family: SourceHanSansSC-bold;
             }
 
             .text-check {
                 position: absolute;
-                top: 43.25rem;
-                left: 53.1875rem;
-                width: 5.0488rem;
-                height: 1.8431rem;
-                line-height: 1.8125rem;
+                top: 36.0417vw;
+                left: 44.3229vw;
+                width: 4.2073vw;
+                height: 1.5359vw;
+                line-height: 1.5104vw;
                 color: rgba(0, 0, 0, 1);
-                font-size: 1.25rem;
+                font-size: 1.0417vw;
                 text-align: left;
                 font-family: SourceHanSansSC-regular;
             }
@@ -184,48 +234,48 @@ const login = async () => {
 
                 .inf-form-id {
                     position: absolute;
-                    left: 10.4375rem;
-                    top: 19.8125rem;
+                    left: 8.6979vw;
+                    top: 16.5104vw;
                 }
 
                 .inf-form-psd {
                     position: absolute;
-                    left: 10.4375rem;
-                    top: 25.4375rem;
+                    left: 8.6979vw;
+                    top: 21.1979vw;
                 }
 
                 .inf-form-inpt {
-                    width: 29.375rem;
-                    height: 2.5625rem;
-                    line-height: 1.8125rem;
+                    width: 24.4792vw;
+                    height: 2.1354vw;
+                    line-height: 1.5104vw;
                     color: rgba(136, 136, 136, 1);
-                    font-size: 1.25rem;
+                    font-size: 1.0417vw;
                     text-align: left;
                     font-family: Microsoft Yahei;
                 }
 
                 .loginbutton {
                     position: absolute;
-                    top: 33.9375rem;
-                    left: 16.6875rem;
-                    width: 16.75rem;
-                    height: 2.5rem;
-                    line-height: 1.4375rem;
-                    border-radius: .625rem;
+                    top: 28.2813vw;
+                    left: 13.9063vw;
+                    width: 13.9583vw;
+                    height: 2.0833vw;
+                    line-height: 1.1979vw;
+                    border-radius: .5208vw;
                     background-color: rgba(33, 84, 118, 1);
                     color: rgba(255, 255, 255, 1);
-                    font-size: 1rem;
+                    font-size: .8333vw;
                     text-align: center;
                     font-family: Microsoft Yahei;
                 }
 
                 .rememberpsd {
                     position: absolute;
-                    left: 6.25rem;
-                    top: 42.6875rem;
+                    left: 5.2083vw;
+                    top: 35.5729vw;
 
                     .checkbox {
-                        zoom: 155%
+                        zoom: 135%
                     }
                 }
 
@@ -235,16 +285,16 @@ const login = async () => {
 
     .login-bg-left {
         position: absolute;
-        width: 32.8125rem;
-        height: 67.5rem;
+        width: 27.3438vw;
+        height: 56.25vw;
         background-color: rgba(33, 84, 118, 1);
     }
 
     .login-bg-right {
         position: absolute;
-        left: 32.8125rem;
-        width: 87.1875rem;
-        height: 67.5rem;
+        left: 27.3438vw;
+        width: 72.6563vw;
+        height: 56.25vw;
         background-color: rgba(64, 149, 229, 0.33);
     }
 
@@ -252,10 +302,21 @@ const login = async () => {
         margin-bottom: 0;
     }
     :deep(.el-form-item__error) { 
-        top: 30.375rem;
-        left: 21.625rem;
-        font-size: 1.25rem;
+        top: 25.3125vw;
+        left: 18.0208vw;
+        font-size: 1.0417vw;
     }
+
+    .cover{
+    display: none;
+    width: fit-content;
+    background-color: aliceblue;
+    position: absolute;
+    top: 25vw;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1000;
+  }
 
 
 }</style>

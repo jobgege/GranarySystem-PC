@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="header-left">
-            <el-icon style="cursor: pointer;" @click="handleCollapse">
+            <el-icon style="cursor: pointer" class="left" @click="handleCollapse">
                 <!-- 使用：is懂得动态绑定组件的类型 -->
                 <component :is="CollapseStore.isCollapse?'Expand':'Fold'"> </component>
             </el-icon>
@@ -32,7 +32,8 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import { useCollapseStore } from '../store/collapse';
-
+import {  useRouter } from 'vue-router';
+const router = useRouter();
 
 //折叠
 const CollapseStore = useCollapseStore();
@@ -52,7 +53,7 @@ const handleSetting = () => {
 }
 
 const handleQuit = () => {
-
+    router.push('/login');
 }
 </script>
 
@@ -69,8 +70,20 @@ const handleQuit = () => {
 
 .header {
     width: 100%;
+    height: 5.0625rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    line-height: 1.25rem;
+    background-color: rgba(251,250,250,1);
+    color: rgba(16,16,16,1);
+    font-size: .875rem;
+    text-align: center;
+    font-family: Roboto;
+}
+.left{
+    position: relative;
+    float: left;
+    font-size:30px;
 }
 </style>

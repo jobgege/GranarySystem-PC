@@ -103,11 +103,11 @@ const handleTags = (command) => {
 <style scoped lang="less">
 .tags {
 	position: relative;
-	height: 30px;
+	height: 1.875rem;
 	overflow: hidden;
-	background: #fff;
-	padding-right: 120px;
-	box-shadow: 0 5px 10px #ddd;
+	background: #EFEFEF;
+	padding-right: 7.5rem;
+	box-shadow: 0 .3125rem .625rem #ddd;
 }
 
 .tags ul {
@@ -125,7 +125,7 @@ const handleTags = (command) => {
 	font-size: 12px;
 	overflow: hidden;
 	cursor: pointer;
-	height: 23px;
+	height: 1.6875rem;
 	border: 1px solid #e9eaec;
 	background: #fff;
 	padding: 0 5px 0 12px;

@@ -1,8 +1,6 @@
 <template>
-    <div>
-        <Informa>
-        </Informa>
-    </div>
+    <Informa>
+    </Informa>
 </template>
 
 <script setup>

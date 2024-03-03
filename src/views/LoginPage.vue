@@ -98,7 +98,6 @@ const login = async () => {
         .login-main-picture {
             float: left;
             width: 45.5rem;
-
             height: 100%;
             background: url('src/assets/login.png') no-repeat;
         }

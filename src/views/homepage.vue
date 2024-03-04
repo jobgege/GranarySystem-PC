@@ -29,6 +29,11 @@
   </script>
   
   <style scoped >
+
+  *{
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
   .asider {
     height: 100vh;
     transition: width 0.2s;

@@ -227,7 +227,7 @@ const onAgain = () => {
 
             .inf-form {
                 position: relative;
-                background-color: pink;
+                background-color: pink; 
 
                 .inf-form-id {
                     position: absolute;

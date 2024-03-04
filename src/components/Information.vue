@@ -30,19 +30,30 @@
                 <span>
                     {{user.password}}
                 </span>
-                <span class='link'>
+                <span class='link' @click="dialogVisible = true">
                     修改密码
                 </span>
             </el-card>
         </div>  
-    </el-card>
+    </el-card> 
+    <!-- v-show="ChangeOpen" -->
+    <el-dialog
+    v-model="dialogVisible"
+    title="修改密码"
+    width="34vw"
+    height="41.14vh"
+    :before-close="handleClose"
+  >
+  <!-- 内嵌表单 -->
+    <CgPassFrom class="pass"></CgPassFrom>
+    </el-dialog>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue'
 import {  useRouter } from 'vue-router';
+import CgPassFrom from './ChangePass.vue'
 const router = useRouter();
-
 
 const user = reactive({
     name: '王小五',
@@ -51,6 +62,19 @@ const user = reactive({
     worknumber:'111111111',
     imgUrl:''
 })
+import { ElMessageBox } from 'element-plus'
+
+const dialogVisible = ref(false)
+
+const handleClose = (done) => {
+  ElMessageBox.confirm('取消修改密码吗?')
+    .then(() => {
+      done()
+    })
+    .catch(() => {
+      // catch error
+    })
+}
 </script>
 <style scoped lang="less">
     .el-card.father{
@@ -107,6 +131,20 @@ const user = reactive({
         height: 3.867vw;
         line-height: 3.867vw;
         color: rgba(15,64,245,1);
+        text-align: left;
+        font-family: SourceHanSansSC-regular;
+        cursor: pointer;
+    }
+    .pass{
+        z-index: 10!important;
+        margin: auto;
+    }
+     /deep/ .el-dialog__title{
+        width: 7rem;
+        height: 2.56rem;
+        line-height: 2.56rem;
+        color: rgba(64,149,229,1);
+        font-size: 1.45vw;
         text-align: left;
         font-family: SourceHanSansSC-regular;
     }

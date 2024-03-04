@@ -9,7 +9,6 @@ declare global {
   const ElMessage: typeof import('element-plus/es')['ElMessage']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
-  const ElMessage: typeof import('element-plus/es')['ElMessage']
   const customRef: typeof import('vue')['customRef']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']

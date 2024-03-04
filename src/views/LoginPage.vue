@@ -19,12 +19,10 @@ onMounted(()=>{
 
 
 // 整个用于提交的form数据对象
-
 const formModel = ref({
     userId: '',
     password: ''
 })
-
 const form = ref()
 // 表单校验规则
 const rules = {

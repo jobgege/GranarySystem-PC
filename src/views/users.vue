@@ -1,5 +1,8 @@
 <template>
-    <div>
-        hhhh
-    </div>
+   <ManageAbort></ManageAbort>
+
 </template>
+
+<script setup>
+import ManageAbort from '../components/ManageAbort.vue';
+</script>

@@ -1,7 +1,7 @@
 <template>
-    <div class="leftbar">
+    <div class="leftbar" style="height: 100%;">
         <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#2d3d51" text-color="#BFCBD9"
-            :collapse="CollapseStore.isCollapse">
+            :collapse="CollapseStore.isCollapse" style="height: 100%;">
             <div class="mb-2 logobox">
                 <span v-show="!CollapseStore.isCollapse" class="title">粮食检验检测系统</span>
             </div>
@@ -253,7 +253,7 @@ img {
     border: 0rem;
     height: 100vh;
     overflow-x: hidden;
-    overflow-y: hidden;
+    // overflow-y: hidden;
     background-color:rgba(33,45,62,1);
     
 }

@@ -14,7 +14,7 @@ const asyncRoutes = [
                     title: '首页',
                     permiss: '1',
                 },
-                component: () => import( '../views/users.vue'),
+                component: () => import( '../views/MainPage.vue'),
             },
             {
                 path: '/management',

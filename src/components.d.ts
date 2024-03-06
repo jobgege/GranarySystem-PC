@@ -30,7 +30,7 @@ declare module 'vue' {
     Header: typeof import('./components/Header.vue')['default']
     Information: typeof import('./components/Information.vue')['default']
     LeftBar: typeof import('./components/LeftBar.vue')['default']
-    ManageAbort: typeof import('./components/ManageAbort.vue')['default']
+    ManageAbort: typeof import('./components/MainPage/ManageAbort.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Tags: typeof import('./components/tags.vue')['default']

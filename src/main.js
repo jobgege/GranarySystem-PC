@@ -6,7 +6,7 @@ import {createPinia} from "pinia";
 import piniaPluginPersist from 'pinia-plugin-persist'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-
+import echarts from 'echarts'; 
 import './index.css'
 
 
@@ -29,4 +29,4 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 //         }
 //     },
 // });
-app.use(pinia).use(router).use(ElementPlus).mount('#app')
+app.use(pinia).use(router).use(ElementPlus).use(echarts).mount('#app')

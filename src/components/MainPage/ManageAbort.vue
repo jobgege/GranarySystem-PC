@@ -29,7 +29,7 @@
 .father{
     position: relative;
     top: 1.25rem;
-    left:3.75vw;
+    left:3vw;
     width: 79vw;
     height: 19vh;
     border-radius: 0.5rem;
@@ -47,7 +47,7 @@
     color: rgb(16,16,16);
     text-align: left;
     font-family: SourceHanSansSC-bold;
-    margin-left: 1.11VW;
+    margin-left: 1.11vw;
 }
 .main{
     width: 79.69vw;

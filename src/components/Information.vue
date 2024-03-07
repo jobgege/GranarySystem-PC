@@ -39,11 +39,13 @@
     <!-- v-show="ChangeOpen" -->
     <el-dialog
     v-model="dialogVisible"
-    title="修改密码"
     width="34vw"
     height="41.14vh"
     :before-close="handleClose"
   >
+  <template #title>
+      <div class='titleZise'>修改密码</div>
+    </template>
   <!-- 内嵌表单 -->
     <CgPassFrom class="pass"></CgPassFrom>
     </el-dialog>
@@ -124,6 +126,13 @@ const handleClose = (done) => {
         //文字样式
         margin: 1.333vw 0;
         font-size: 0.833vw;
+    }
+    .titleZise{
+        line-height: 2.56rem;
+        color: rgba(64,149,229,1);
+        font-size: 1.46vw;
+        text-align: center;
+        font-family: SourceHanSansSC-regular;
     }
     .link{
         margin-left:1.875rem ;

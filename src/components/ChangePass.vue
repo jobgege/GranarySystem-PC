@@ -1,3 +1,4 @@
+
 <template>
     <el-form
     ref="ruleFormRef"
@@ -23,9 +24,9 @@
     </el-form-item>
     <el-form-item class="button">
       <el-button type="primary" @click="submitForm(ruleFormRef)"
-        >提交</el-button
+        >确认修改</el-button
       >
-      <el-button @click="resetForm(ruleFormRef)">重置</el-button>
+
     </el-form-item>
   </el-form>
 </template>
@@ -107,14 +108,23 @@ const ruleForm = reactive({
   margin-right: 12px;
 }
 .el-form{
-    width: 34vw;
+    width: 30vw;
     height: 41.14vh;
     background-color: #FFFFFF;
+   
 }
-.button{
-  margin: auto 0;
-  text-align: center;
-  
+.el-form-item__content{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    .el-button{
+      line-height: 1.25rem;
+      border-radius: 0.25rem;
+      background-color: rgba(15,64,245,1);
+      color: rgba(255,255,255,1);
+      font-size: 0.88rem;
+      text-align: center;
+    }
 }
 
 </style>

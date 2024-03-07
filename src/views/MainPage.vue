@@ -19,6 +19,7 @@
       </el-card>
       <el-card class="qualityTest">
          <h4>本月质量检测记录</h4>
+         <LineChart></LineChart>
       </el-card>
       <div class="right">
          <el-card class="disqualifyScale">
@@ -26,6 +27,7 @@
          </el-card>
          <el-card class="qualityScale">
             <h4>累计质检比例</h4>
+            <PineChart></PineChart>
          </el-card>
       </div>
    </div>
@@ -33,6 +35,8 @@
 
 <script setup>
 import ManageAbort from '../components/MainPage/ManageAbort.vue';
+import LineChart from '../components/Echarts/LineCharts/index.vue'
+import PineChart from '../components/Echarts/PineCharts/index.vue'
 </script>
 
 <style scoped lang="less">
@@ -90,7 +94,7 @@ import ManageAbort from '../components/MainPage/ManageAbort.vue';
       height: 58.19vh;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
       .disqualifyScale{
          height:27.89vh;
          line-height: 1.25rem;

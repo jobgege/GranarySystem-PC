@@ -54,7 +54,7 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import {  useRouter } from 'vue-router';
-import CgPassFrom from './ChangePass.vue'
+import CgPassFrom from './From/ChangePass.vue'
 const router = useRouter();
 
 const user = reactive({
@@ -157,4 +157,4 @@ const handleClose = (done) => {
         text-align: left;
         font-family: SourceHanSansSC-regular;
     }
-</style>
+</style>./From/ChangePass.vue

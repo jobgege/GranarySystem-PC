@@ -24,6 +24,7 @@
       <div class="right">
          <el-card class="disqualifyScale">
             <h4>累计检测不合格项比例</h4>
+            <PineChart></PineChart>
          </el-card>
          <el-card class="qualityScale">
             <h4>累计质检比例</h4>

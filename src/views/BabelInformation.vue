@@ -4,22 +4,24 @@
        <!-- 最好封装成组件 -->
        <el-card class="BusyMachine">
           <h4>运行设备</h4>
-          <el-card class="son">
+          <el-card class="son" v-for="(item,index) in tableData">
              <!-- 到时候根据数据遍历生成son属性名的el-card -->
                  <span>
-                     { { index } }
+                    {{ item.Machine }}
                  </span>
                  <span>
-                     { { 日期 } }
-                 </span>
-                 <span>
-                     { { 质量 } }
+                     {{ item.Status }}
                  </span>
              </el-card>
        </el-card>
        <el-card class="MachineTest">
           <h4>本月设备检测记录</h4>
-            <el-table></el-table>
+          <el-table :data="tableData" border class="table" header-cell-class-name="table-header">
+                <el-table-column prop="Machine" label="设备"></el-table-column>
+                <el-table-column prop="Status" label="检测状态"></el-table-column>
+                <el-table-column prop="Time" label="检测时间"></el-table-column>
+                <el-table-column prop="Logger" label="登记人员"></el-table-column>
+            </el-table>
        </el-card>
        <el-card class="MachineFault">
           <h4>设备报错</h4>
@@ -29,10 +31,41 @@
  </template>
  
  <script setup>
+ import { onMounted } from 'vue';
  import ManageAbort from '../components/MainPage/ManageAbort.vue';
-
+ const tableData = ref([]);
+ const getData = () => {
+    tableData.value = [
+        {
+         Machine: '一号扦样机',
+         Status: '正常',
+         Time: '2024.03.01 09:13:01',
+         Logger: '小王',
+        },
+        {
+         Machine: '一号扦样机',
+         Status: '正常',
+         Time: '2024.03.01 09:13:01',
+         Logger: '小王',
+        },
+        {
+         Machine: '一号扦样机',
+         Status: '正常',
+         Time: '2024.03.01 09:13:01',
+         Logger: '小王',
+        },
+        {
+         Machine: '一号扦样机',
+         Status: '危险',
+         Time: '2024.03.01 09:13:01',
+         Logger: '小王',
+        },
+    ];
+};
  
-
+onMounted(()=>{
+   getData();
+})
 
  </script>
  
@@ -103,7 +136,7 @@
     .son{
        width: 14.05vw;
        height: 4.44vh;
-       background-color: rgba(255,255,255,1);
+       background-color: rgba(5,193,116,0.24);
        color: rgba(16,16,16,1);
        font-size: 0.73vw;
        display:flex ;
@@ -111,6 +144,11 @@
        justify-content: space-between;
        font-family: Roboto;
        border: 0.06rem solid rgba(187,187,187,1);
-       
+       margin-bottom: 1vh;
+       span{
+      color: rgba(16,16,16,1);
+      font-size: 0.88rem;
+      text-align: left;
+       }
     }
  </style>

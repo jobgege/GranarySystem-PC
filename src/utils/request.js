@@ -26,13 +26,13 @@ const service = axios.create(Object.assign({},{
 
 // 添加请求拦截器
 service.interceptors.request.use((config) => {
-  NProgress.start()//开启进度条
+  // NProgress.start()//开启进度条
   // 如果有token, 通过请求头携带给后台
   const userInfoStore = useUserInfoStore(pinia) // 如果不是在组件中调用,必须传入pinia
   const token = userInfoStore.token//拿到token的数据
      if (token) {
       // config.headers['token'] = token  // 报错: headers对象并没有声明有token, 不能随便添加
-      (config.headers)['token'] = token //这是什么语法？
+      (config.headers)['token'] = token 
     }
   return config;
 });

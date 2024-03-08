@@ -7,7 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    ChangePass: typeof import('./components/ChangePass.vue')['default']
+    ChangePass: typeof import('./components/From/ChangePass.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -27,6 +27,7 @@ declare module 'vue' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElTable: typeof import('element-plus/es')['ElTable']
     Header: typeof import('./components/Header.vue')['default']
     Information: typeof import('./components/Information.vue')['default']
     LeftBar: typeof import('./components/LeftBar.vue')['default']

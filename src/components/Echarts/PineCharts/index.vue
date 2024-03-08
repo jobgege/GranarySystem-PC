@@ -46,11 +46,11 @@
         show: false
       },
       data: [
-        { value: 1048, name: 'Search Engine' },
-        { value: 735, name: 'Direct' },
-        { value: 580, name: 'Email' },
-        { value: 484, name: 'Union Ads' },
-        { value: 300, name: 'Video Ads' }
+        { value: 1048},
+        { value: 735},
+        { value: 580},
+        { value: 484 },
+        { value: 300}
       ]
     }
   ]
@@ -77,6 +77,6 @@
 <style scoped lang="less">
 	#echarts1{
     width: 14.05vw;
-    height:27vh;
+    height:20vh;
 	}
 </style>

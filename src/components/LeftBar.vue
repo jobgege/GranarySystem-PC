@@ -131,39 +131,45 @@ const getMenuData = () => {
                 {
                     menuid: 22,
                     icon: 'Connection',
+                    label: '基础信息',
+                    name: 'babelinformation',
+                },
+                {
+                    menuid: 23,
+                    icon: 'Connection',
                     label: '扦样机配置',
                     name: 'SampleConfig',
                 },
                 {
-                    menuid: 23,
+                    menuid: 24,
                     icon: 'Connection',
                     label: '质检设备配置',
                     name: 'QualityConfig',
                     
                 },
                 {
-                    menuid: 24,
+                    menuid: 25,
                     icon: 'Connection',
                     label: '粮食信息配置',
                     name: 'GranaryConfig',
                     
                 },
                 {
-                    menuid: 25,
+                    menuid: 26,
                     icon: 'Connection',
                     label: '仓库管理',
                     name: 'HouseManage',
                     
                 },
                 {
-                    menuid: 26,
+                    menuid: 27,
                     icon: 'Connection',
                     label: '供应商管理',
                     name: 'SupplierManage',
                     
                 },
                 {
-                    menuid: 27,
+                    menuid: 28,
                     icon: 'Connection',
                     label: '摄像头配置',
                     name: 'CameraConfig',

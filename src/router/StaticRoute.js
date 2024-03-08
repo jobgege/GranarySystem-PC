@@ -46,6 +46,24 @@ const asyncRoutes = [
                 // component: () => import(/* webpackChunkName: "table" */ '../views/table.vue'),
             },
             {
+                path: '/babelinformation',
+                name: 'Basic',
+                meta: {
+                    title: '基础信息',
+                },
+                children: [
+                    {
+                        path: '/babelinformation',
+                        name: 'BabelInformation',
+                        meta: {
+                            title: '基础信息',
+                            permiss: '14',
+                        },
+                        component: () => import( '../views/BabelInformation.vue'),
+                    },
+                ]
+            },
+            {
                 path: '/personhome',
                 name: 'PersonHome',
                 meta: {

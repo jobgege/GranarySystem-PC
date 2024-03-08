@@ -39,14 +39,14 @@
   }
   
   .main {
-    height: calc(100vh - 65px);
+    height: calc(90vh);
     box-shadow: rgba(204, 219, 232, 0.5) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     padding: 0;
     overflow-x: hidden;
   }
   
   .header {
-    height: 4rem;
+    height: 5.93vh;
     background-color: rgba(251,250,250,1);
   }
   </style>

@@ -39,11 +39,13 @@
     <!-- v-show="ChangeOpen" -->
     <el-dialog
     v-model="dialogVisible"
-    title="修改密码"
     width="34vw"
     height="41.14vh"
     :before-close="handleClose"
   >
+  <template #title>
+      <div class='titleZise'>修改密码</div>
+    </template>
   <!-- 内嵌表单 -->
     <CgPassFrom class="pass"></CgPassFrom>
     </el-dialog>
@@ -52,7 +54,7 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import {  useRouter } from 'vue-router';
-import CgPassFrom from './ChangePass.vue'
+import CgPassFrom from './From/ChangePass.vue'
 const router = useRouter();
 
 const user = reactive({
@@ -125,6 +127,13 @@ const handleClose = (done) => {
         margin: 1.333vw 0;
         font-size: 0.833vw;
     }
+    .titleZise{
+        line-height: 2.56rem;
+        color: rgba(64,149,229,1);
+        font-size: 1.46vw;
+        text-align: center;
+        font-family: SourceHanSansSC-regular;
+    }
     .link{
         margin-left:1.875rem ;
         width: 8.533vw;
@@ -148,4 +157,4 @@ const handleClose = (done) => {
         text-align: left;
         font-family: SourceHanSansSC-regular;
     }
-</style>
+</style>./From/ChangePass.vue

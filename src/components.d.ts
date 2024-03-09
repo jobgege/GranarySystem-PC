@@ -33,7 +33,6 @@ declare module 'vue' {
     Information: typeof import('./components/Information.vue')['default']
     LeftBar: typeof import('./components/LeftBar.vue')['default']
     LineCharts: typeof import('./components/Echarts/LineCharts/index.vue')['default']
-    MainPage: typeof import('./components/MainPage/index.vue')['default']
     ManageAbort: typeof import('./components/MainPage/ManageAbort.vue')['default']
     PineCharts: typeof import('./components/Echarts/PineCharts/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

@@ -7,7 +7,7 @@ import SlideVerify from "vue3-slide-verify"
 import "vue3-slide-verify/dist/style.css"
 import { useUserStore } from '../store/user'
 import { onMounted } from 'vue'
-
+import { getMenu } from '../api';
 
 // 进入页面先填入工号和密码、勾选记住密码的状态
 const checkToRememberPsd = ref(false)
@@ -57,7 +57,10 @@ const onSuccess= async ()=>{
     }else{
         userStore.password = ''
     }
-    }catch(error){console.log('登陆出错')} finally {}
+    }catch(error){console.log('登陆出错')} finally {
+        const MenuData =await getMenu()
+        console.log(MenuData)
+    }
     
 }
 const onFail=()=>{

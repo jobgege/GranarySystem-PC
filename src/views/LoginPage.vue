@@ -8,11 +8,12 @@ import "vue3-slide-verify/dist/style.css"
 import { useUserStore } from '../store/user'
 import { onMounted } from 'vue'
 
+
 // 进入页面先填入工号和密码、勾选记住密码的状态
 const checkToRememberPsd = ref(false)
 const userStore = useUserStore()
 onMounted(()=>{
-  formModel.value.userId = userStore.userId
+  formModel.value.username = userStore.username
   formModel.value.password = userStore.password
   checkToRememberPsd.value = userStore.rememberPsd
 })
@@ -20,13 +21,13 @@ onMounted(()=>{
 
 // 整个用于提交的form数据对象
 const formModel = ref({
-    userId: '',
-    password: ''
+    username: 'root',
+    password: 'E10ADC3949BA59ABBE56E057F20F883E'
 })
 const form = ref()
 // 表单校验规则
 const rules = {
-  userId: [
+  username: [
     { required: true, message: '请输入信息', trigger: 'blur' }
   ],
   password: [
@@ -37,17 +38,18 @@ const rules = {
 // 1.点击登录先进行预校验，通过后显示滑块验证
 const loginbutton = async () => {
   // 预校验，没输入信息不会进行滑块验证
-  await form.value.validate()
+    await form.value.validate()
   // 能改变showSlideVerify的值但是组件不显示？？最后直接修改display的值
-  document.querySelector('.cover').style.display = "block"
+    document.querySelector('.cover').style.display = "block"
 }
 // 2.验证成功后请求后端，失败显示不通过
-const onSuccess=()=>{
-    //TODO: 请求后端
-    router.push("/") //跳转到前台首页
+const onSuccess= async ()=>{
+    try{
+    await userStore.login(formModel.value)
+    router.push("/homepage") //跳转到前台首页
     ElMessage.success("登陆成功")
     // 登陆成功之后本地存储用户信息
-    userStore.userId = formModel.value.userId
+    userStore.username = formModel.value.username
     // 勾选记住密码后本地存储密码,取消勾选时要清除本地存储的密码
     userStore.rememberPsd = checkToRememberPsd.value
     if (checkToRememberPsd.value === true) {
@@ -55,6 +57,8 @@ const onSuccess=()=>{
     }else{
         userStore.password = ''
     }
+    }catch(error){console.log('登陆出错')} finally {}
+    
 }
 const onFail=()=>{
 }
@@ -87,11 +91,11 @@ const onAgain = () => {
                 :model="formModel" 
                 :rules="rules"
                 >
-                    <el-form-item prop="userId">
+                    <el-form-item prop="username">
                         <el-input 
                         class="inf-form-inpt inf-form-id" 
                         placeholder="请输入您的工号"
-                        v-model="formModel.userId" 
+                        v-model="formModel.username" 
                         ></el-input>
                     </el-form-item>
                     <el-form-item prop="password">

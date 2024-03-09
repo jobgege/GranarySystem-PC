@@ -56,4 +56,16 @@ export default defineConfig({
   commonjsOptions: {
     esmExternals: true,
  },
+ //配置跨域
+ server: {
+  port: 8001,
+  open: true,
+  proxy: {
+    '/app-dev': {
+      target: 'http://119.3.15.195:8081/',
+      changeOrigin: true,
+      rewrite: (path) => path.replace(/^\/app-dev/, '')
+    }
+  }
+}
 })

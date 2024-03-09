@@ -1,4 +1,6 @@
 import { defineStore } from "pinia";
+import { getToken, removeToken, setToken } from '../utils/token-utils';
+import {Login} from '../api'
 
 // 用户信息
 export const useUserStore = defineStore('user', {
@@ -6,18 +8,31 @@ export const useUserStore = defineStore('user', {
     state: () => {
         return {
             //设置token
-            userId: '',
-            password: '',
-            rememberPsd: false
+            username: 'root',
+            password: 'E10ADC3949BA59ABBE56E057F20F883E ',
+            rememberPsd: false,
+            token: getToken(),
         }
     },
     getters: {
-        
-    },
+       },
     actions: {
-
+         // 登陆的异步action
+    async login (loginForm) {
+        // 发送登陆的请求
+        console.log(loginForm)
+       const result = await Login(loginForm)
+       console.log(result)
+       // 请求成功后, 取出token保存  pinia和local中
+       const token = result.data.data.token
+       this.token = token
+       setToken(token)
+       //将token存储到pinia层及localStorage中
+     },
     },
+    
     persist: {
+        //持久化数据
         enabled: true,
     }
 })

@@ -40,7 +40,7 @@ const asyncRoutes = [
                             title: '扦样管理',
                             permiss: '13',
                         },
-                        // component: () => import( '../views/users.vue'),
+                        component: () => import( '../views/SamplingManagement.vue'),
                     },
                 ]
                 // component: () => import(/* webpackChunkName: "table" */ '../views/table.vue'),

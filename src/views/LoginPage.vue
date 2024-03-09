@@ -57,7 +57,11 @@ const onSuccess= async ()=>{
     }else{
         userStore.password = ''
     }
-    }catch(error){console.log('登陆出错')} finally {}
+    }catch(error){
+        console.log('登陆出错')
+        ElMessage.error("登陆失败，用户名或密码错误")
+        document.querySelector('.cover').style.display = "none"
+    } finally {}
     
 }
 const onFail=()=>{
@@ -231,7 +235,6 @@ const onAgain = () => {
 
             .inf-form {
                 position: relative;
-                background-color: pink; 
 
                 .inf-form-id {
                     position: absolute;

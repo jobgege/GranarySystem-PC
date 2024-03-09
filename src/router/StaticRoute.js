@@ -31,7 +31,7 @@ const asyncRoutes = [
                             title: '入门登记',
                             permiss: '12',
                         },
-                        // component: () => import( '../views/users.vue'),
+                        component: () => import( '../views/EntryRegistration.vue'),
                     },
                     {
                         path: '/sampling',

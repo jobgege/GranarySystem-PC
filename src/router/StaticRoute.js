@@ -3,7 +3,7 @@ const asyncRoutes = [
     // 先空着这里，后面来补充功能 
     {
         path: '/',
-        redirect:'/homepage',
+        redirect:'/login',
         name: 'Home',
         component:Home,
         children: [

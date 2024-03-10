@@ -1,13 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter,useRoute } from 'vue-router'
 const router = useRouter()
+const route =useRoute()
 // 引入滑块组件
 import SlideVerify from "vue3-slide-verify"
 import "vue3-slide-verify/dist/style.css"
 import { useUserStore } from '../store/user'
-import { onMounted } from 'vue'
-import { getMenu } from '../api';
+import { onMounted,getCurrentInstance  } from 'vue'
+import { getMenu,getProfile } from '../api';
 
 // 进入页面先填入工号和密码、勾选记住密码的状态
 const checkToRememberPsd = ref(false)
@@ -59,7 +60,9 @@ const onSuccess= async ()=>{
     }
     }catch(error){console.log('登陆出错')} finally {
         const MenuData =await getMenu()
+        const ProfileData =await getProfile()
         console.log(MenuData)
+        console.log(ProfileData)
     }
     
 }
@@ -70,7 +73,13 @@ const onRefresh=()=>{
 const onAgain = () => {
 }
 
-
+// onMounted(() => {
+//       const instance = getCurrentInstance();
+//       if (instance && instance.proxy && instance.proxy.$router) {
+//         console.log('合并后的路由表信息:', instance.proxy.$router.options.routes);
+//       }
+//     });
+  
 
 </script>
 

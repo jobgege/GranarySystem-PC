@@ -1,96 +1,62 @@
-import Home from '../views/homepage.vue';
+//这里处理获取到的路由表信息
 const asyncRoutes = [
-    // 先空着这里，后面来补充功能 
     {
-        path: '/',
-        redirect:'/login',
-        name: 'Home',
-        component:Home,
+        path: '/management',
+        name: 'Management',
+        meta: {
+            title: '工作管理',
+            permiss: '11',
+        },
         children: [
             {
-                path: '/homepage',
-                name: 'Homepage',
+                path: '/entry',
+                name: 'Entry',
                 meta: {
-                    title: '首页',
-                    permiss: '1',
+                    title: '入门登记',
+                    permiss: '12',
                 },
-                component: () => import( '../views/MainPage.vue'),
+                // component: () => import( '../views/users.vue'),
             },
             {
-                path: '/management',
-                name: 'Management',
+                path: '/sampling',
+                name: 'Sampling',
                 meta: {
-                    title: '工作管理',
-                    permiss: '11',
+                    title: '扦样管理',
+                    permiss: '13',
                 },
-                children: [
-                    {
-                        path: '/entry',
-                        name: 'Entry',
-                        meta: {
-                            title: '入门登记',
-                            permiss: '12',
-                        },
-                        // component: () => import( '../views/users.vue'),
-                    },
-                    {
-                        path: '/sampling',
-                        name: 'Sampling',
-                        meta: {
-                            title: '扦样管理',
-                            permiss: '13',
-                        },
-                        // component: () => import( '../views/users.vue'),
-                    },
-                ]
-                // component: () => import(/* webpackChunkName: "table" */ '../views/table.vue'),
+                // component: () => import( '../views/users.vue'),
             },
-            {
-                path: '/babelinformation',
-                name: 'Basic',
-                meta: {
-                    title: '基础信息',
-                },
-                children: [
-                    {
-                        path: '/babelinformation',
-                        name: 'BabelInformation',
-                        meta: {
-                            title: '基础信息',
-                            permiss: '14',
-                        },
-                        component: () => import( '../views/BabelInformation.vue'),
-                    },
-                ]
-            },
-            {
-                path: '/personhome',
-                name: 'PersonHome',
-                meta: {
-                    title: '个人中心',
-                },
-                 component: () => import(/* webpackChunkName: "login" */ '../views/PersonPage.vue'),
-            },
-        ],
+        ]
+        // component: () => import(/* webpackChunkName: "table" */ '../views/table.vue'),
     },
     {
-        path: '/login',
-        name: 'Login',
+        path: '/babelinformation',
+        name: 'Basic',
         meta: {
-            title: '登录',
+            title: '基础信息',
         },
-         component: () => import(/* webpackChunkName: "login" */ '../views/LoginPage.vue'),
-
+        children: [
+            {
+                path: '/babelinformation',
+                name: 'BabelInformation',
+                meta: {
+                    title: '基础信息',
+                    permiss: '14',
+                },
+                component: () => import( '../views/BabelInformation.vue'),
+            },
+        ]
     },
-   
-    // {
-    //     path: '/403',
-    //     name: '403',
-    //     meta: {
-    //         title: '没有权限',
-    //     },
-    //     // component: () => import(/* webpackChunkName: "403" */ '../views/403.vue'),
-    // },
-  ]
+    {
+        path: '/personhome',
+        name: 'PersonHome',
+        meta: {
+            title: '个人中心',
+        },
+         component: () => import('../views/PersonPage.vue'),
+    },
+]
+
   
-  export default asyncRoutes
+  
+export default asyncRoutes

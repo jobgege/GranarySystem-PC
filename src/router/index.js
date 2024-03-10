@@ -1,10 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import asyncRoutes from './StaticRoute'
+import ConstantRoutes from './ConstantRoute'
 
-
+ConstantRoutes[0].children=ConstantRoutes[0].children.concat(asyncRoutes)
+console.log(ConstantRoutes)
 const router = createRouter({
   history: createWebHistory(),
-  routes:asyncRoutes
+  // 控制路由滚动行为  滚动到顶部
+  scrollBehavior: () => ({ y: 0 }),
+  routes: ConstantRoutes
 })
 
 // router.beforeEach((to, from, next) => {

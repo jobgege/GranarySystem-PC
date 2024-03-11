@@ -3,30 +3,31 @@ import { ref } from 'vue'
 const entrybatchevalue = ref('')
 const entrytimevalue = ref('')
 const registrantvalue = ref('')
+const centerDialogVisible = ref(false)
 const tableData = [
   {
-    serialNumber: 'a',
-    entryBatchNumber: 'a',
-    grainVariety: 'a',
-    entryTime: 'a',
-    grainWeight: 'a',
-    registrant: 'a',
+    serialNumber: '1',
+    entryBatchNumber: 'RK—2024022800001',
+    grainVariety: '品种名',
+    entryTime: '2021-03-10 11:00',
+    grainWeight: '1000kg',
+    registrant: 'XXX',
   },
   {
-    serialNumber: 'b',
-    entryBatchNumber: 'b',
-    grainVariety: 'b',
-    entryTime: 'b',
-    grainWeight: 'b',
-    registrant: 'b',
+    serialNumber: '2',
+    entryBatchNumber: 'RK—2024022800002',
+    grainVariety: '品种名',
+    entryTime: '2021-03-10 11:00',
+    grainWeight: '1000kg',
+    registrant: 'XXX',
   },
   {
-    serialNumber: 'c',
-    entryBatchNumber: 'c',
-    grainVariety: 'c',
-    entryTime: 'c',
-    grainWeight: 'c',
-    registrant: 'c',
+    serialNumber: '3',
+    entryBatchNumber: 'RK—2024022800003',
+    grainVariety: '品种名',
+    entryTime: '2021-03-10 11:00',
+    grainWeight: '1000kg',
+    registrant: 'XXX',
   }
 ]
 </script>
@@ -56,7 +57,7 @@ const tableData = [
     <div class="head-function">
         <!-- 左边新建登记 -->
         <div class="new-registration">
-           <el-button class="new-registration-btn" :icon="Plus" color="#72CE60" ><el-icon><Plus /></el-icon>&nbsp;新建登记</el-button> 
+           <el-button @click="centerDialogVisible = true" class="new-registration-btn" :icon="Plus" color="#72CE60" ><el-icon><Plus /></el-icon>&nbsp;新建登记</el-button> 
         </div>
         <!-- 右边三个功能-可复用 -->
         <div class="function-class">
@@ -72,13 +73,13 @@ const tableData = [
         @selection-change="handleSelectionChange"
         max-height="647"
         style="width: 100%">
-            <el-table-column class="selection" type="selection" align='center' min-width="6"/>
+            <el-table-column class="selection" type="selection" align='center' min-width="5"/>
             <el-table-column class="serialNumber" prop="serialNumber" label="序号" align='center' min-width="5"/>
-            <el-table-column class="entryBatchNumber" prop="entryBatchNumber" label="入门批次编号" align='center' min-width="12"/>
+            <el-table-column class="entryBatchNumber" prop="entryBatchNumber" label="入门批次编号" align='center' min-width="15"/>
             <el-table-column class="grainVariety" prop="grainVariety" label="粮食品种" align='center' min-width="10"/>
             <el-table-column class="entryTime" prop="entryTime" label="入门时间" align='center' min-width="12"/>
             <el-table-column class="grainWeight" prop="grainWeight" label="粮食重量" align='center' min-width="10"/>
-            <el-table-column class="registrant" prop="registrant" label="登记人员" align='center' min-width="11"/>
+            <el-table-column class="registrant" prop="registrant" label="登记人员" align='center' min-width="9"/>
             <el-table-column class="operation" label="操作" align='center' min-width="34">
                 <template #default="scope">
                   <el-button size="small" color="#1890FF">查看入门监控</el-button>&nbsp;
@@ -93,6 +94,25 @@ const tableData = [
     <div class="bottom-pagination">
         <el-pagination background layout="prev, pager, next" :total="1000" />
     </div>
+    <!-- 弹出新建登记 -->
+    <el-dialog
+      v-model="centerDialogVisible"
+      title="Warning"
+      width="500"
+      align-center
+    >
+      <!-- 中间表单部分 -->
+      <span>Open the dialog from the center from the screen</span>
+      <!-- 底部取消和提交 -->
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button @click="centerDialogVisible = false">取消</el-button>
+          <el-button type="primary" @click="centerDialogVisible = false">
+            提交
+          </el-button>
+        </div>
+      </template>
+    </el-dialog>
 </template>
 
   

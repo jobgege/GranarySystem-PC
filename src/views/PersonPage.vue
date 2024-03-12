@@ -1,7 +1,6 @@
 <template>
     <Informa>
     </Informa>
-
     <el-card class="usedLog">
           <h4>本周操作记录</h4>
           <el-card class="son">

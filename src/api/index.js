@@ -18,6 +18,12 @@ export const Login = (params) => {
 
 //获取菜单数据的接口
 export const getMenu = () => {
-  return request.post("api/v1/account/menu");
+  return request.get("api/v1/account/menu");
+};
+
+
+//获取用户个人数据的接口
+export const getProfile = () => {
+  return request.get("api/v1/account/profile");
 };
 

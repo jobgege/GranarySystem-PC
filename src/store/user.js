@@ -20,9 +20,7 @@ export const useUserStore = defineStore('user', {
          // 登陆的异步action
     async login (loginForm) {
         // 发送登陆的请求
-        console.log(loginForm)
        const result = await Login(loginForm)
-       console.log(result)
        // 请求成功后, 取出token保存  pinia和local中
        const token = result.data.data.token
        this.token = token

@@ -33,6 +33,7 @@
 import { reactive, ref } from 'vue'
 import { useCollapseStore } from '../store/collapse';
 import {  useRouter } from 'vue-router';
+import { removeToken } from '../utils/token-utils';
 const router = useRouter();
 
 //折叠
@@ -54,6 +55,7 @@ const handleSetting = () => {
 
 const handleQuit = () => {
     router.push('/login');
+    removeToken();
 }
 </script>
 

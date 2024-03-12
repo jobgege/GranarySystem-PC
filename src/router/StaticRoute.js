@@ -8,26 +8,25 @@ const asyncRoutes = [
             permiss: '11',
         },
         children: [
-            {
-                path: '/entry',
-                name: 'Entry',
-                meta: {
-                    title: '入门登记',
-                    permiss: '12',
-                },
-                // component: () => import( '../views/users.vue'),
-            },
-            {
-                path: '/sampling',
-                name: 'Sampling',
-                meta: {
-                    title: '扦样管理',
-                    permiss: '13',
-                },
-                // component: () => import( '../views/users.vue'),
-            },
+           {
+                        path: '/entry',
+                        name: 'Entry',
+                        meta: {
+                            title: '入门登记',
+                            permiss: '12',
+                        },
+                        component: () => import( '../views/EntryRegistration.vue'),
+                    },
+                    {
+                        path: '/sampling',
+                        name: 'Sampling',
+                        meta: {
+                            title: '扦样管理',
+                            permiss: '13',
+                        },
+                        component: () => import( '../views/SamplingManagement.vue'),
+                    },
         ]
-        // component: () => import(/* webpackChunkName: "table" */ '../views/table.vue'),
     },
     {
         path: '/babelinformation',
